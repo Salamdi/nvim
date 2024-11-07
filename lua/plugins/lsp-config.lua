@@ -17,18 +17,8 @@ return {
 		"neovim/nvim-lspconfig",
 		keys = {
 			{ "<leader>e", vim.diagnostic.open_float, mode = "n" },
-			{
-				"<leader>cc",
-				"I// <ESC>",
-				mode = "n",
-				ft = { "javascript", "javascriptreact", "typescript", "typescriptreact", "go" },
-			},
-			{
-				"<leader>cb",
-				"c/*  */<ESC>hh<S-p>",
-				mode = "v",
-				ft = { "javascript", "javascriptreact", "typescript", "typescriptreact", "go" },
-			},
+			{ "]g", vim.diagnostic.goto_next, mode = "n" },
+			{ "[g", vim.diagnostic.goto_prev, mode = "n" },
 			{ "<S-l>", "$", mode = "n" },
 			{ "<S-h>", "^", mode = "n" },
 		},
