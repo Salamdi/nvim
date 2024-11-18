@@ -4,7 +4,7 @@ return {
   priority = 1000,
   config = function()
     vim.o.termguicolors = true
-    vim.cmd.colorscheme "catppuccin-latte"
+    vim.cmd.colorscheme "catppuccin-frappe"
   end
 }
 
