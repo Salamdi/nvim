@@ -18,7 +18,6 @@ return {
     "nvim-telescope/telescope-ui-select.nvim",
     config = function()
       require("telescope").setup({
-        ignore_patterns = { "node_modules" },
         defaults = {
           layout_config = {
             vertical = { width = 0.7 }
