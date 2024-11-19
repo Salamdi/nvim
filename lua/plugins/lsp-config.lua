@@ -30,9 +30,35 @@ return {
 			lspconfig.ts_ls.setup({
 				capabilities = capabilities,
 			})
-			lspconfig.gopls.setup({
-				capabilities = capabilities,
-			})
+			local ok, mason_registry = pcall(require, "mason-registry")
+			if not ok then
+				vim.notify("mason-registry could not be loaded")
+			else
+				local angularls_path = mason_registry.get_package("angular-language-server"):get_install_path()
+				local cmd = {
+					"ngserver",
+					"--stdio",
+					"--tsProbeLocations",
+					table.concat({
+						angularls_path,
+						vim.uv.cwd(),
+					}, ","),
+					"--ngProbeLocations",
+					table.concat({
+						angularls_path .. "/node_modules/@angular/language-server",
+						vim.uv.cwd(),
+					}, ","),
+				}
+
+				local config = {
+					cmd = cmd,
+					on_new_config = function(new_config)
+						new_config.cmd = cmd
+					end,
+				}
+
+				lspconfig.angularls.setup(config)
+			end
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 				callback = function(ev)
