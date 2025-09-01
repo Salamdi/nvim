@@ -10,7 +10,7 @@ return {
   keys = {
     -- { "<leader>tt", "<cmd>Neotree toggle reveal<CR>", mode = "n" },
     -- { "<leader>tt", "<cmd>Neotree toggle float reveal<CR>:set nu rnu<CR>", mode = "n" },
-    { "<leader>gs", "<cmd>Neotree float git_status<CR>:set nu rnu<CR>",    mode = "n" },
+    { "<leader>gt", "<cmd>Neotree float git_status<CR>:set nu rnu<CR>",    mode = "n" },
   },
   config = function()
     require("neo-tree").setup({})
